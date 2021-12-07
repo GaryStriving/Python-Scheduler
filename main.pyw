@@ -1,4 +1,4 @@
-from .task_runner import TaskRunner
+from task_runner import TaskRunner
 
 def main():
     task_runner = TaskRunner('example.json')
