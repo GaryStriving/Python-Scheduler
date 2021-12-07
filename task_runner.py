@@ -30,7 +30,7 @@ class Task:
     def get_time_to_task(self,from_hour):
         return self.date_and_hour.time_from(from_hour)
     def run(self):
-        subprocess.call([self.path])
+        subprocess.call(self.path)
 
 class TaskRunner:
     def __init__(self,filename):

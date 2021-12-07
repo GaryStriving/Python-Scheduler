@@ -1,5 +1,5 @@
 {
     "tasks": [
-        {"year": "*", "month": "*", "day": "*", "hours": "17", "minutes": "0", "path": "C:/Users/Administrator/Desktop/Exercise-Reminder/build/Release/Exercise-Reminder.exe"}
+        {"year": "*", "month": "*", "day": "*", "hours": "17", "minutes": "0", "path": ["C:/Users/Administrator/Desktop/Exercise-Reminder/build/Release/Exercise-Reminder.exe"]}
     ]
 }
