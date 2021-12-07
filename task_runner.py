@@ -1,3 +1,4 @@
+import time
 import datetime
 import subprocess
 import json
@@ -29,7 +30,7 @@ class Task:
     def get_time_to_task(self,from_hour):
         return self.date_and_hour.time_from(from_hour)
     def run(self):
-        subprocess.call(['python',self.path])
+        subprocess.call([self.path])
 
 class TaskRunner:
     def __init__(self,filename):
@@ -48,11 +49,4 @@ class TaskRunner:
                     if task.get_time_to_task(now_datehour) == 0:
                         task.run()
                 last_checked = now_datehour
-
-def main():
-    task_runner = TaskRunner('example.json')
-    while True:
-        task_runner.await_next()
-
-if __name__ == '__main__':
-    main()
+            time.sleep(60 - now.second)
