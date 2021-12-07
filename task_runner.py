@@ -1,5 +1,4 @@
 import datetime
-from os import terminal_size
 import subprocess
 import json
 
@@ -10,7 +9,7 @@ class DateHour:
     def __str__(self):
         return str(self.data)
     def __eq__(self,other):
-        return self.data == other.data and self.path == other.path
+        return type(self) == type(other) and self.data == other.data
     def __ne__(self,other):
         return not (self == other)
     def time_from(self,time_to_compare):
@@ -30,7 +29,7 @@ class Task:
     def get_time_to_task(self,from_hour):
         return self.date_and_hour.time_from(from_hour)
     def run(self):
-        subprocess.call(['python','test1.py'])
+        subprocess.call(['python',self.path])
 
 class TaskRunner:
     def __init__(self,filename):
@@ -41,13 +40,15 @@ class TaskRunner:
         if len(self.tasks) == 0:
             raise
         next_task = self.tasks[0]
+        last_checked = None
         while True:
             now = datetime.datetime.now()
             now_datehour = DateHour({'year': str(now.year), 'month': str(now.month),'day': str(now.day), 'hours': str(now.hour), 'minutes': str(now.minute)})
-            if next_task.get_time_to_task(now_datehour) == 0:
+            if now_datehour != last_checked and next_task.get_time_to_task(now_datehour) == 0:
                 next_task.run()
                 self.order_task(0)
-                break
+                last_checked = now_datehour
+            
     def order_task(self,task_index):
         now = datetime.datetime.now()
         next_minute_datehour = DateHour({'year': str(now.year), 'month': str(now.month),'day': str(now.day), 'hours': str(now.hour), 'minutes': str(now.minute + 1)})
