@@ -39,28 +39,15 @@ class TaskRunner:
     def await_next(self):
         if len(self.tasks) == 0:
             raise
-        next_task = self.tasks[0]
         last_checked = None
         while True:
             now = datetime.datetime.now()
             now_datehour = DateHour({'year': str(now.year), 'month': str(now.month),'day': str(now.day), 'hours': str(now.hour), 'minutes': str(now.minute)})
-            if now_datehour != last_checked and next_task.get_time_to_task(now_datehour) == 0:
-                next_task.run()
-                self.order_task(0)
+            if now_datehour != last_checked:
+                for task in self.tasks:
+                    if task.get_time_to_task(now_datehour) == 0:
+                        task.run()
                 last_checked = now_datehour
-            
-    def order_task(self,task_index):
-        now = datetime.datetime.now()
-        next_minute_datehour = DateHour({'year': str(now.year), 'month': str(now.month),'day': str(now.day), 'hours': str(now.hour), 'minutes': str(now.minute + 1)})
-        executed_task = self.tasks[task_index]
-        for index, task in enumerate(self.tasks):
-            if index <= task_index:
-                continue
-            if executed_task.get_time_to_task(next_minute_datehour) > task.get_time_to_task(next_minute_datehour):
-                self.tasks[index-1] = task
-            else:
-                self.tasks[index-1] = executed_task
-                break
 
 def main():
     task_runner = TaskRunner('example.json')

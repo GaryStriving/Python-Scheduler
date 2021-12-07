@@ -1,5 +1,6 @@
 {
     "tasks": [
-        {"year": "*", "month": "*", "day": "*", "hours": 17, "minutes": 0, "path": "C:/Users/Administrator/Desktop/Python-Scheduler/sample_task.py"}
+        {"year": "*", "month": "*", "day": "*", "hours": 17, "minutes": 0, "path": "C:/Users/Administrator/Desktop/Python-Scheduler/sample_task.py"},
+        {"year": 2021, "month": 12, "day": 6, "hours": 21, "minutes": 40, "path": "C:/Users/Administrator/Desktop/Python-Scheduler/sample_task.py"}
     ]
 }
