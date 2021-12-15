@@ -4,7 +4,7 @@ import datetime
 import os
 
 class Scheduler:
-    def __init__(self,filename):
+    def __init__(self,filename=""):
         self.data = []
         if filename and os.path.isfile(filename):
             with open(filename) as ifile:
@@ -13,7 +13,7 @@ class Scheduler:
     def register(self,command,time):
         if isinstance(time,datetime.datetime):
             time = DateHour.from_datetime(time)
-        new_task = {"command": command}.update(time.to_dict())
+        new_task = dict(command=command,**time.to_dict())
         self.data.append(new_task)
     def unregister(self,func):
         self.data = [task for task in self.data if not func(task)]
