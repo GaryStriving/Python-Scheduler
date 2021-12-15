@@ -1,4 +1,4 @@
-from DateHour import DateHour
+from src.DateHour import DateHour
 import json
 import datetime
 import os
@@ -6,7 +6,7 @@ import os
 class Scheduler:
     def __init__(self,filename):
         self.data = []
-        if filename and os.is_file(filename):
+        if filename and os.path.isfile(filename):
             with open(filename) as ifile:
                 settings = json.load(ifile)
                 self.data = settings["tasks"]
@@ -19,7 +19,7 @@ class Scheduler:
         self.data = [task for task in self.data if not func(task)]
     def save(self,filename):
         settings = {}
-        if filename and os.is_file(filename):
+        if filename and os.path.isfile(filename):
             with open(filename,'r') as ifile:
                 settings = json.load(ifile)
         settings["tasks"] = self.data

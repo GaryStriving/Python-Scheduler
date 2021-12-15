@@ -1,4 +1,4 @@
-from src.task_runner import DateHour
+from src.DateHour import DateHour
 
 def test_classical_matching_matches():
     date_hour_1 = DateHour({'year': '2021', 'month': '12', 'day': '25', 'hours': '0', 'minutes': '0'})
