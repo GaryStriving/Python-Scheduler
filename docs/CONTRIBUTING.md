@@ -9,7 +9,7 @@ Because of this, and to make the environment more enjoyable for everyone, we imp
 </p>
 
 <p align="justify">
-To contribute, you must follow our <!-- ProjectDependant --> <a href="https://github.com/GaryNLOL/Supple-Crystal/blob/main/docs/CODE_OF_CONDUCT.md">Code of Conduct</a><!-- /ProjectDependant -->.
+To contribute, you must follow our <!-- ProjectDependant --> <a href="https://github.com/GaryNLOL/Python-Scheduler/blob/main/docs/CODE_OF_CONDUCT.md">Code of Conduct</a><!-- /ProjectDependant -->.
 Please be sure you have read it.
 Additionally, if you're going to contribute with code, please follow the <a href="https://github.com/GaryNLOL/Style-Guides">corresponding style guide</a> of the language you will use.
 If there is not a style guide language of the language you want to use, please let it know in the Discord server and we will answer you as soon as possible.
