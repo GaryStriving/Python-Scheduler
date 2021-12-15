@@ -8,6 +8,11 @@
   <img alt="badge-codesize" src="https://img.shields.io/github/languages/code-size/GaryNLOL/Python-Scheduler?style=for-the-badge">
 </p>
 
+## Useful links
+- [Contributing Guidelines](https://github.com/GaryNLOL/Python-Scheduler/blob/main/docs/CONTRIBUTING.md)
+- [Project's Style Guide](https://github.com/GaryNLOL/Style-Guides/).
+- [Discord Server.](https://discord.gg/RQN6gcDQwX)
+
 ## What is Python Scheduler?
 Python Scheduler is a scheduling library in Python.
 
