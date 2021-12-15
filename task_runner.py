@@ -9,19 +9,11 @@ class DateHour:
         self.data = {k: str(v) if v != str else v for k,v in data.items() if k in ['year','month','day','hours','minutes']}
     def __str__(self):
         return str(self.data)
-    def __eq__(self,other):
-        return type(self) == type(other) and self.data == other.data
-    def __ne__(self,other):
-        return not (self == other)
-    def time_from(self,time_to_compare):
-        minutes = 0
+    def matches(self,time_to_compare):
         for criteria in ['year','month','day','hours','minutes']:
-            if self.data[criteria] == time_to_compare.data[criteria]:
-                continue
-            if self.data[criteria] == '*' or time_to_compare.data[criteria] == '*':
-                continue
-            minutes += (int(time_to_compare.data[criteria]) - int(self.data[criteria])) * {'year': 525600, 'month': 43800, 'day': 1440, 'hours': 60, 'minutes': 1}[criteria]
-        return -minutes
+            if self.data[criteria] != time_to_compare.data[criteria] and self.data[criteria] != '*' and time_to_compare.data[criteria] != '*':
+                return False
+        return True
 
 class Task:
     def __init__(self,path,date_and_hour):
@@ -46,7 +38,7 @@ class TaskRunner:
             now_datehour = DateHour({'year': str(now.year), 'month': str(now.month),'day': str(now.day), 'hours': str(now.hour), 'minutes': str(now.minute)})
             if now_datehour != last_checked:
                 for task in self.tasks:
-                    if task.get_time_to_task(now_datehour) == 0:
+                    if task.matches(now_datehour):
                         task.run()
                 last_checked = now_datehour
             time.sleep(60 - now.second)
